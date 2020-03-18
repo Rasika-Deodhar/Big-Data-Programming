@@ -1,0 +1,39 @@
+#!/bin/bash
+
+datafile="crimedata-australia.csv"
+
+#min_avg="$(cat $datafile | tail -n+2 | cut -d ',' -f2)"
+min_avg=0.0
+min_avg_name="$(cat $datafile | head -1 | cut -d ',' -f2)"
+
+total="$(tail -n+2 $datafile | wc -l)"
+
+for i in {2..10}
+do
+sum=0
+column_name="$(cat $datafile | head -1 | cut -d ',' -f$i)"
+column="$(cat $datafile | tail -n+2 | cut -d ',' -f$i)"
+echo $columns_num
+
+ for j in $column
+ do
+   let sum=$(($sum+$j))
+ done
+
+ avg=$(echo "scale=2; $sum/$total"|bc -l)
+# echo $avg
+
+ if [ $i -eq 2 ]
+ then
+   $min_avg=$avg
+#   $min_avg_name=$column_name
+ else
+   if (( $(echo "$min_avg > $avg" | bc -l) ))
+   then
+     $min_avg=$avg
+     $min_avg_name=$column_name
+   fi
+ fi
+done
+
+echo "Avg is = $min_avg for city = $min_avg_name"
