@@ -204,10 +204,29 @@ sudo mysql -h localhost -e "show databases"
 sudo mysql -h localhost -e "use football"
 
 SQL -
-mysql> select surname from players where surname like '%ia%' AND minutes < 200 AND passes > 100;
-Empty set (0.00 sec)
+mysql> select surname from players where team like '%ia%' AND minutes < 200 AND passes > 100;
++------------+
+| surname    |
++------------+
+| Kuzmanovic |
++------------+
+1 row in set (0.00 sec)
 
 MongoDB -
+> db.players.find({
+...     "team": {
+... $regex: /ia/
+... },
+...     "minutes": {
+...         "$lt": 200
+...     },
+...     "passes": {
+...         "$gt": 100
+...     }
+... }, {
+...     "surname": 1
+... });
+{ "_id" : ObjectId("5e72629ea6830e68f96a2dab"), "surname" : "Kuzmanovic" }
 
 2. Find all players who made more than 20 shots. Return all player information in descending order of shots made.
 
@@ -223,174 +242,81 @@ mysql> select * from players where shots > 20 ORDER BY shots DESC ;
 3 rows in set (0.00 sec)
 
 MongoDB -
+> db.players.find({
+...     "shots": {
+...         "$gt": 20
+...     }
+... }).sort({
+...     "shots": -1
+... });
+{ "_id" : ObjectId("5e72629ea6830e68f96a2cc4"), "surname" : "Gyan", "team" : "Ghana", "position" : "forward", "minutes" : 501, "shots" : 27, "passes" : 151, "tackles" : 1, "saves" : 0 }
+{ "_id" : ObjectId("5e72629ea6830e68f96a2e13"), "surname" : "Villa", "team" : "Spain", "position" : "forward", "minutes" : 529, "shots" : 22, "passes" : 169, "tackles" : 2, "saves" : 0 }
+{ "_id" : ObjectId("5e72629ea6830e68f96a2c18"), "surname" : "Messi", "team" : "Argentina", "position" : "forward", "minutes" : 450, "shots" : 21, "passes" : 321, "tackles" : 10, "saves" : 0 }
 
 3. Find the goalkeepers of teams that played more than four games. List the surname of the goalkeeper, the team, and the number of minutes the goalkeeper played.
 
 SQL -
-mysql> select surname, team, minutes from players where team in (select team from teams where games > 4);
-+-----------------+-------------+---------+
-| surname         | team        | minutes |
-+-----------------+-------------+---------+
-| Aguero          | Argentina   |     106 |
-| Bolatti         | Argentina   |      98 |
-| Burdisso        | Argentina   |     341 |
-| Demichelis      | Argentina   |     450 |
-| Di Maria        | Argentina   |     356 |
-| Gutierrez       | Argentina   |     191 |
-| Heinze          | Argentina   |     360 |
-| Higuain         | Argentina   |     341 |
-| Mascherano      | Argentina   |     360 |
-| Maxi Rodriguez  | Argentina   |     346 |
-| Messi           | Argentina   |     450 |
-| Milito          | Argentina   |      91 |
-| Otamendi        | Argentina   |     250 |
-| Palermo         | Argentina   |      10 |
-| Pastore         | Argentina   |      37 |
-| Rodriguez       | Argentina   |      90 |
-| Romero          | Argentina   |     450 |
-| Samuel          | Argentina   |     114 |
-| Tevez           | Argentina   |     324 |
-| Veron           | Argentina   |     185 |
-| Baptista        | Brazil      |      82 |
-| Daniel Alves    | Brazil      |     310 |
-| Elano           | Brazil      |     140 |
-| Fabiano         | Brazil      |     418 |
-| Gilberto        | Brazil      |      33 |
-| Gilberto Silva  | Brazil      |     450 |
-| Grafite         | Brazil      |       5 |
-| Josue           | Brazil      |      46 |
-| Juan            | Brazil      |     450 |
-| Julio Cesar     | Brazil      |     450 |
-| Kaka            | Brazil      |     337 |
-| Kleberson       | Brazil      |       9 |
-| Lucio           | Brazil      |     450 |
-| Maicon          | Brazil      |     450 |
-| Melo            | Brazil      |     291 |
-| Michel Bastos   | Brazil      |     422 |
-| Nilmar          | Brazil      |     129 |
-| Ramires         | Brazil      |     105 |
-| Robinho         | Brazil      |     354 |
-| Badstuber       | Germany     |     167 |
-| Boateng         | Germany     |     287 |
-| Cacau           | Germany     |     132 |
-| Friedrich       | Germany     |     540 |
-| Gomez           | Germany     |      57 |
-| Jansen          | Germany     |      73 |
-| Khedira         | Germany     |     517 |
-| Kiessling       | Germany     |       7 |
-| Klose           | Germany     |     356 |
-| Kroos           | Germany     |      50 |
-| Lahm            | Germany     |     540 |
-| Marin           | Germany     |      29 |
-| Mertesacker     | Germany     |     540 |
-| Mueller         | Germany     |     383 |
-| Neuer           | Germany     |     540 |
-| Podolski        | Germany     |     531 |
-| Schweinsteiger  | Germany     |     531 |
-| Trochowski      | Germany     |     109 |
-| Ozil            | Germany     |     497 |
-| Addy            | Ghana       |     138 |
-| Adiyiah         | Ghana       |      33 |
-| Amoah           | Ghana       |      11 |
-| Annan           | Ghana       |     510 |
-| Appiah          | Ghana       |     105 |
-| Asamoah         | Ghana       |     480 |
-| Ayew            | Ghana       |     389 |
-| Boateng         | Ghana       |     464 |
-| Gyan            | Ghana       |     501 |
-| Inkoom          | Ghana       |     187 |
-| John Mensah     | Ghana       |     420 |
-| Jonathan Mensah | Ghana       |     300 |
-| Kingson         | Ghana       |     510 |
-| Muntari         | Ghana       |     134 |
-| Owusu-Abeyie    | Ghana       |      35 |
-| Pantsil         | Ghana       |     510 |
-| Sarpei          | Ghana       |     463 |
-| Tagoe           | Ghana       |     210 |
-| Vorsah          | Ghana       |     210 |
-| Afellay         | Netherlands |      21 |
-| Boulahrouz      | Netherlands |     180 |
-| Elia            | Netherlands |      85 |
-| Heitinga        | Netherlands |     540 |
-| Huntelaar       | Netherlands |      48 |
-| Kuyt            | Netherlands |     516 |
-| Mathijsen       | Netherlands |     450 |
-| Ooijer          | Netherlands |      90 |
-| Robben          | Netherlands |     267 |
-| Sneijder        | Netherlands |     532 |
-| Stekelenburg    | Netherlands |     540 |
-| Van der Vaart   | Netherlands |     257 |
-| Van der Wiel    | Netherlands |     360 |
-| de Jong         | Netherlands |     448 |
-| de Zeeuw        | Netherlands |      47 |
-| van Bommel      | Netherlands |     540 |
-| van Bronckhorst | Netherlands |     540 |
-| van Persie      | Netherlands |     479 |
-| Alcaraz         | Paraguay    |     390 |
-| Barreto         | Paraguay    |     111 |
-| Barrios         | Paraguay    |     308 |
-| Benitez         | Paraguay    |      83 |
-| Bonet           | Paraguay    |     300 |
-| Caniza          | Paraguay    |      90 |
-| Cardozo         | Paraguay    |     204 |
-| Caceres         | Paraguay    |      90 |
-| Caceres         | Paraguay    |     354 |
-| Da Silva        | Paraguay    |     480 |
-| Morel Rodriguez | Paraguay    |     480 |
-| Ortigoza        | Paraguay    |      75 |
-| Riveros         | Paraguay    |     480 |
-| Santa Cruz      | Paraguay    |     312 |
-| Santana         | Paraguay    |     120 |
-| Torres          | Paraguay    |      82 |
-| Valdez          | Paraguay    |     337 |
-| Vera            | Paraguay    |     414 |
-| Veruen          | Paraguay    |      90 |
-| Villar          | Paraguay    |     480 |
-| Alonso          | Spain       |     506 |
-| Arbeloa         | Spain       |      13 |
-| Busquets        | Spain       |     511 |
-| Capdevila       | Spain       |     540 |
-| Casillas        | Spain       |     540 |
-| Fabregas        | Spain       |      94 |
-| Iniesta         | Spain       |     437 |
-| Javi Martuenez  | Spain       |      17 |
-| Jesus Navas     | Spain       |     118 |
-| Juan Mata       | Spain       |      20 |
-| Llorente        | Spain       |      31 |
-| Marchena        | Spain       |       8 |
-| Pedro Rodriguez | Spain       |     116 |
-| Pique           | Spain       |     540 |
-| Puyol           | Spain       |     534 |
-| Ramos           | Spain       |     527 |
-| Silva           | Spain       |      66 |
-| Torres          | Spain       |     278 |
-| Villa           | Spain       |     529 |
-| Xavi            | Spain       |     515 |
-| Abreu           | Uruguay     |      72 |
-| Arevalo Rios    | Uruguay     |     570 |
-| Cavani          | Uruguay     |     435 |
-| Caceres         | Uruguay     |      90 |
-| Eguren          | Uruguay     |       2 |
-| Fernandez       | Uruguay     |      75 |
-| Fernandez       | Uruguay     |       7 |
-| Forlan          | Uruguay     |     564 |
-| Fucile          | Uruguay     |     371 |
-| Gargano         | Uruguay     |      91 |
-| Goduen          | Uruguay     |     315 |
-| Gonzalez        | Uruguay     |      63 |
-| Lodeiro         | Uruguay     |     109 |
-| Lugano          | Uruguay     |     398 |
-| Maxi Pereira    | Uruguay     |     570 |
-| Muslera         | Uruguay     |     570 |
-| Perez           | Uruguay     |     567 |
-| Scotti          | Uruguay     |      95 |
-| Suarez          | Uruguay     |     452 |
-| Victorino       | Uruguay     |     435 |
-| Alvaro Pereira  | Uruguay     |     409 |
-+-----------------+-------------+---------+
-156 rows in set (0.00 sec)
+mysql> select surname, team, minutes from players where team in (select team from teams where games > 4) and position='goalkeeper';
++--------------+-------------+---------+
+| surname      | team        | minutes |
++--------------+-------------+---------+
+| Romero       | Argentina   |     450 |
+| Julio Cesar  | Brazil      |     450 |
+| Neuer        | Germany     |     540 |
+| Kingson      | Ghana       |     510 |
+| Stekelenburg | Netherlands |     540 |
+| Villar       | Paraguay    |     480 |
+| Casillas     | Spain       |     540 |
+| Muslera      | Uruguay     |     570 |
++--------------+-------------+---------+
+8 rows in set (0.00 sec)
+
 
 MongoDB -
+> db.players.aggregate([
+... {
+...    $lookup:
+...      {
+...        from: "teams",
+...        localField: "team",
+...    foreignField: "team",
+...        as: "Team"
+...      }
+... },
+... {
+... $match:
+... {
+... $and:
+... [
+... {
+... "position": "goalkeeper"
+... },
+... {
+... "Team.games": {$gt:4}
+... }
+ct:
+        {
+    ]
+... }
+... },
+... {
+... $project:
+... {
+... "surname": 1,
+... "team": 1,
+... "minutes": 1
+... }
+... }
+... ]);
+{ "_id" : ObjectId("5e72629ea6830e68f96a2c1e"), "surname" : "Romero", "team" : "Argentina", "minutes" : 450 }
+{ "_id" : ObjectId("5e72629ea6830e68f96a2c3e"), "surname" : "Julio Cesar", "team" : "Brazil", "minutes" : 450 }
+{ "_id" : ObjectId("5e72629ea6830e68f96a2cb7"), "surname" : "Neuer", "team" : "Germany", "minutes" : 540 }
+{ "_id" : ObjectId("5e72629ea6830e68f96a2cc8"), "surname" : "Kingson", "team" : "Ghana", "minutes" : 510 }
+{ "_id" : ObjectId("5e72629ea6830e68f96a2d46"), "surname" : "Stekelenburg", "team" : "Netherlands", "minutes" : 540 }
+{ "_id" : ObjectId("5e72629ea6830e68f96a2d92"), "surname" : "Villar", "team" : "Paraguay", "minutes" : 480 }
+{ "_id" : ObjectId("5e72629ea6830e68f96a2e05"), "surname" : "Casillas", "team" : "Spain", "minutes" : 540 }
+{ "_id" : ObjectId("5e72629ea6830e68f96a2e37"), "surname" : "Muslera", "team" : "Uruguay", "minutes" : 570 }
+
 
 4. How many players who play on a team with ranking <10 played more than 350 minutes? Return one number in a column named 'superstar'
 
@@ -404,6 +330,8 @@ mysql> select count(*) as superstar from players where team in (select team from
 1 row in set (0.00 sec)
 
 MongoDB -
+> db.players.aggregate([{$lookup:{from:'teams', localField:'team', foreignField:'team', as:'Team'}},{$match:{$and:[{"Team.ranking":{$lt:10}},{"minutes":{$gt:350}}]}},{$facet:{count:[{$count:"superstar"}]}}]).toArray();
+[ { "count" : [ { "superstar" : 54 } ] } ]
 
 5. What is the average number of passes made by forwards? By midfelders? Write one query that gives both values with the corresponding position.
 
@@ -418,6 +346,10 @@ mysql> select position, avg(passes) from players where position='midfielder' or 
 2 rows in set (0.00 sec)
 
 MongoDB -
+> db.players.aggregate( [ { $match: { $or: [ { position:"forward" }, { position:"midfielder" } ] } },{ $group: {_id:"$position", avg_passes: { $avg: "$passes"} } } ] )
+{ "_id" : "forward", "avg_passes" : 50.82517482517483 }
+{ "_id" : "midfielder", "avg_passes" : 95.2719298245614 }
+
 
 6. Find all pairs of teams who have the same number of goalsFor as each other and the same number of goalsAgainst as each other. Return the teams and numbers of goalsFor and goalsAgainst. Make sure to return each pair only once.
 
@@ -439,6 +371,94 @@ mysql> select a.team as Team_A, b.team as Team_B, a.goalsFor as goals_for, a.goa
 9 rows in set (0.00 sec)
 
 MongoDB -
+> db.getCollection('teams').aggregate([
+...    {
+...       $lookup:{
+...          from:"teams",
+...          let:{"bId":"$_id","bTeam":"$team","bgoalsFor":"$goalsFor","bgoalsAgainst":"$goalsAgainst"},
+...          pipeline:[
+...             {
+...                $match:{
+...                   $and:[
+...                      {$expr:{$lt:["$_id","$$bId"]}},
+...                      {$expr:{$ne:["$team","$$bTeam"]}},
+...                      {$expr:{$eq:["$goalsFor","$$bgoalsFor"]}},
+...                      {$expr:{$eq:["$goalsAgainst","$$bgoalsAgainst"]}}
+...                   ]
+...                }
+...             }
+...          ],
+...          as:"team2"
+...       }
+...    },
+...    {$unwind:"$team2"},
+...    {$addFields:{"against_team":"$team2.team"}},
+...    {$project:{"team":1,"goalsFor":1,"goalsAgainst":1,"against_team":1}}
+... ]).pretty();
+{
+        "_id" : ObjectId("5e72629ea6830e68f96a2e61"),
+        "team" : "Mexico",
+        "goalsFor" : 4,
+        "goalsAgainst" : 5,
+        "against_team" : "Italy"
+}
+{
+        "_id" : ObjectId("5e72629ea6830e68f96a2e63"),
+        "team" : "Cameroon",
+        "goalsFor" : 2,
+        "goalsAgainst" : 5,
+        "against_team" : "Greece"
+}
+{
+        "_id" : ObjectId("5e72629ea6830e68f96a2e65"),
+        "team" : "Nigeria",
+        "goalsFor" : 3,
+        "goalsAgainst" : 5,
+        "against_team" : "England"
+}
+{
+        "_id" : ObjectId("5e72629ea6830e68f96a2e67"),
+        "team" : "Chile",
+        "goalsFor" : 3,
+        "goalsAgainst" : 5,
+        "against_team" : "England"
+}
+{
+        "_id" : ObjectId("5e72629ea6830e68f96a2e67"),
+        "team" : "Chile",
+        "goalsFor" : 3,
+        "goalsAgainst" : 5,
+        "against_team" : "Nigeria"
+}
+{
+        "_id" : ObjectId("5e72629ea6830e68f96a2e6d"),
+        "team" : "Denmark",
+        "goalsFor" : 3,
+        "goalsAgainst" : 6,
+        "against_team" : "Australia"
+}
+{
+        "_id" : ObjectId("5e72629ea6830e68f96a2e72"),
+        "team" : "South Africa",
+        "goalsFor" : 3,
+        "goalsAgainst" : 5,
+        "against_team" : "England"
+}
+{
+        "_id" : ObjectId("5e72629ea6830e68f96a2e72"),
+        "team" : "South Africa",
+        "goalsFor" : 3,
+        "goalsAgainst" : 5,
+        "against_team" : "Nigeria"
+}
+{
+        "_id" : ObjectId("5e72629ea6830e68f96a2e72"),
+        "team" : "South Africa",
+        "goalsFor" : 3,
+        "goalsAgainst" : 5,
+        "against_team" : "Chile"
+}
+
 
 7. Which team has the highest ratio of goalsFor to goalsAgainst?
 
@@ -452,6 +472,8 @@ mysql> select team, max(goalsFor/goalsAgainst) as ratio from teams group by team
 1 row in set (0.00 sec)
 
 MongoDB -
+> db.teams.aggregate([{$group: {_id:"$team", ratio: { $max : { $divide: ["$goalsFor", "$goalsAgainst"]}}}},{$sort:{ratio:-1}},{$project:{team:1, ratio:1}}, {$group:{_id:"$team", first:{$first:"$$ROOT"}}}, {$project:{first:1}}])
+{ "_id" : null, "first" : { "_id" : "Portugal", "ratio" : 7 } }
 
 8. Find all teams whose defenders averaged more than 150 passes. Return the team and average number of passes by defenders, in descending order of average passes.
 
@@ -470,3 +492,10 @@ mysql> select avg(passes) as avg_passes, team from players where position='defen
 
 
 MongoDB -
+> db.players.aggregate( [ { $match: {  position:"defender"  } },{ $group: {_id:"$team", avg_passes: { $avg: "$passes"} } }, {$match:{$expr:{$gt:["$avg_passes", 150]}}}, {$sort: {avg_passes:-1}} ] )
+{ "_id" : "Spain", "avg_passes" : 213 }
+{ "_id" : "Brazil", "avg_passes" : 190 }
+{ "_id" : "Germany", "avg_passes" : 189.83333333333334 }
+{ "_id" : "Netherlands", "avg_passes" : 182.5 }
+{ "_id" : "Mexico", "avg_passes" : 152.14285714285714 }
+>
