@@ -1,0 +1,1 @@
+select a.team as Team_A, b.team as Team_B, a.goalsFor as goals_for, a.goalsAgainst as goals_against from teams a, teams b where a.goalsFor = b.goalsFor and a.goalsAgainst = b.goalsAgainst and a.team < b.team;

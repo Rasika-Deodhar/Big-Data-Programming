@@ -1,0 +1,1 @@
+db.teams.aggregate([{$group: {_id:"$team", ratio: { $max : { $divide: ["$goalsFor", "$goalsAgainst"]}}}},{$sort:{ratio:-1}},{$project:{team:1, ratio:1}}, {$group:{_id:"$team", first:{$first:"$$ROOT"}}}, {$project:{first:1}}])

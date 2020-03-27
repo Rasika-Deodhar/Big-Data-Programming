@@ -1,0 +1,1 @@
+db.players.aggregate([{$lookup:{from:'teams', localField:'team', foreignField:'team', as:'Team'}},{$match:{$and:[{"Team.ranking":{$lt:10}},{"minutes":{$gt:350}}]}},{$facet:{count:[{$count:"superstar"}]}}]).toArray();

@@ -1,0 +1,1 @@
+db.players.aggregate( [ { $match: {  position:"defender"  } },{ $group: {_id:"$team", avg_passes: { $avg: "$passes"} } }, {$match:{$expr:{$gt:["$avg_passes", 150]}}}, {$sort: {avg_passes:-1}} ] )

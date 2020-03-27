@@ -1,0 +1,1 @@
+db.players.find({"shots":{"$gt":20}}).sort({"shots":-1});

@@ -1,0 +1,1 @@
+select count(*) as superstar from players where team in (select team from teams where ranking < 10) and minutes > 350;
