@@ -1,4 +1,4 @@
-#Bash for (Big) Data Analysis
+1.Bash for (Big) Data Analysis
 
 1.1 how many lines of content (no header) is there in the  le?  (tail, wc).
 maggy@csserver:~/project$ tail -n+2 crimedata-australia.csv | wc -l
