@@ -1,0 +1,2 @@
+use football;
+db.players.aggregate([{$lookup:{from:"teams",localField:"team",foreignField:"team",as:"Team"}},{$match:{$and:[{"position":"goalkeeper"},{"Team.games":{$gt:4}}]}},{$project:{"surname":1,"team":1,"minutes":1}}]);

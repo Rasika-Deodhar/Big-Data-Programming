@@ -1,1 +1,0 @@
-db.players.find({"team":{$regex:/ia/},"minutes":{"$lt":200},"passes":{"$gt":100}},{"surname":1})

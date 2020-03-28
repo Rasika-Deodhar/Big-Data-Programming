@@ -1,0 +1,4 @@
+#!/bin/bash
+
+mongoimport -d football -c players --type csv --file Players.csv --headerline
+mongoimport -d football -c teams --type csv --file Teams.csv --headerline

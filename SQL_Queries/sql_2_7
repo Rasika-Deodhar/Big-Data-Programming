@@ -1,0 +1,1 @@
+select team, max(goalsFor/goalsAgainst) as ratio from teams group by team order by ratio desc limit 1;

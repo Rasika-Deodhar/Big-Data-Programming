@@ -1,0 +1,16 @@
+#!/bin/bash
+echo "Enter column value:"
+read column_value
+
+total="$(tail -n+2 "crimedata-australia.csv" | wc -l)"
+column="$(cat "crimedata-australia.csv" | tail -n+2 | cut -d ',' -f$column_value)"
+sum=0
+
+for i in $column
+do
+  sum=$(($sum+$i))
+done
+
+avg=$(($sum/$total))
+
+echo "Avg is = $avg"

@@ -1,1 +1,0 @@
-db.players.aggregate( [ { $match: { $or: [ { position:"forward" }, { position:"midfielder" } ] } },{ $group: {_id:"$position", avg_passes: { $avg: "$passes"} } } ] )

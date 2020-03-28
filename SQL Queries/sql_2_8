@@ -1,1 +1,0 @@
-select avg(passes) as avg_passes, team from players where position='defender' group by team having avg(passes)>150 order by avg_passes desc;
