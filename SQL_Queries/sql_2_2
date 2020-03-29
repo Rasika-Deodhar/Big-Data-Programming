@@ -1,1 +1,0 @@
-select * from players where shots > 20 ORDER BY shots DESC;

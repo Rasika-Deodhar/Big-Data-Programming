@@ -1,1 +1,0 @@
-select surname from players where team like '%ia%' AND minutes < 200 AND passes > 100;

@@ -1,1 +1,0 @@
-select position, avg(passes) from players where position='midfielder' or position='forward' group by position;

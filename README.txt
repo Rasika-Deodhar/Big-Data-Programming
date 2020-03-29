@@ -57,61 +57,13 @@ Steps:-
 ------------------------------
 Part 2: Now answer the following questions using SQL and MongoDB queries/searches.
 ------------------------------
-1. What player on a team with "ia" in the team name played less than 200 minutes and made more than 100 passes? Return the player surname.
 Steps:-
-1. In terminal, go to SQL_Queries directory, then throw command sudo chmod 777 sql_2_1.sql
-2. Now throw command sudo mysql -h localhost football < sql_2_1.sql 
-3. In terminal, go to Mongo_Queries directory, then throw command sudo chmod 777 mongo_2_1.js
-4. Now throw command sudo mongo < mongo_2_1.js 
-
-2. Find all players who made more than 20 shots. Return all player information in descending order of shots made.
-Steps:-
-1. In terminal, go to SQL_Queries directory, then throw command sudo chmod 777 sql_2_2.sql
-2. Now throw command sudo mysql -h localhost football < sql_2_2.sql 
-3. In terminal, go to Mongo_Queries directory, then throw command sudo chmod 777 mongo_2_1.js
-4. Now throw command sudo mongo < mongo_2_1.js 
-
-3. Find the goalkeepers of teams that played more than four games. List the surname of the goalkeeper, the team, and the number of minutes the goalkeeper played.
-Steps:-
-1. In terminal, go to SQL_Queries directory, then throw command sudo chmod 777 sql_2_3.sql
-2. Now throw command sudo mysql -h localhost football < sql_2_3.sql 
-3. In terminal, go to Mongo_Queries directory, then throw command sudo chmod 777 mongo_2_3.js
-4. Now throw command sudo mongo < mongo_2_3.js 
-
-4. How many players who play on a team with ranking <10 played more than 350 minutes? Return one number in a column named 'superstar'
-Steps:-
-1. In terminal, go to SQL_Queries directory, then throw command sudo chmod 777 sql_2_4.sql
-2. Now throw command sudo mysql -h localhost football < sql_2_4.sql 
-3. In terminal, go to Mongo_Queries directory, then throw command sudo chmod 777 mongo_2_4.js
-4. Now throw command sudo mongo < mongo_2_4.js 
-
-5. What is the average number of passes made by forwards? By midfielders? Write one query that gives both values with the corresponding position.
-Steps:-
-1. In terminal, go to SQL_Queries directory, then throw command sudo chmod 777 sql_2_5.sql
-2. Now throw command sudo mysql -h localhost football < sql_2_5.sql 
-3. In terminal, go to Mongo_Queries directory, then throw command sudo chmod 777 mongo_2_5.js
-4. Now throw command sudo mongo < mongo_2_5.js 
-
-6. Find all pairs of teams who have the same number of goalsFor as each other and the same number of goalsAgainst as each other. Return the teams and numbers of goalsFor and goalsAgainst. Make sure to return each pair only once.
-Steps:-
-1. In terminal, go to SQL_Queries directory, then throw command sudo chmod 777 sql_2_6.sql
-2. Now throw command sudo mysql -h localhost football < sql_2_6.sql 
-3. In terminal, go to Mongo_Queries directory, then throw command sudo chmod 777 mongo_2_6.js
-4. Now throw command sudo mongo < mongo_2_6.js 
-
-7. Which team has the highest ratio of goalsFor to goalsAgainst?
-Steps:-
-1. In terminal, go to SQL_Queries directory, then throw command sudo chmod 777 sql_2_7.sql
-2. Now throw command sudo mysql -h localhost football < sql_2_7.sql 
-3. In terminal, go to Mongo_Queries directory, then throw command sudo chmod 777 mongo_2_7.js
-4. Now throw command sudo mongo < mongo_2_7.js 
-
-8. Find all teams whose defenders averaged more than 150 passes. Return the team and average number of passes by defenders, in descending order of average passes.
-Steps:-
-1. In terminal, go to SQL_Queries directory, then throw command sudo chmod 777 sql_2_8.sql
-2. Now throw command sudo mysql -h localhost football < sql_2_8.sql 
-3. In terminal, go to Mongo_Queries directory, then throw command sudo chmod 777 mongo_2_8.js
-4. Now throw command sudo mongo < mongo_2_8.js 
+1. In terminal, go to SQL_Queries directory, then throw command sudo chmod 777 sql_queries.sql
+2. Now throw command sudo mysql -h localhost football < sql_queries.sql 
+3. It will display all outputs of SQL queries.
+3. In terminal, go to Mongo_Queries directory, then throw command sudo chmod 777 mongo_queries.js
+4. Now throw command sudo mongo < mongo_2_1.js
+5. It will display all outputs of Mongo queries.
 
 ----------------------------------
 3. Hadoop
@@ -124,7 +76,8 @@ Steps to upload yellow_tripdata_2019-01.csv file in hadoop.
 
 1. What is the average number of passengers per trip in general and per day of the week?
 Steps:-
-1. 
+1. export HADOOP_CLASSPATH=/usr/lib/jvm/java-1.8.0-openjdk-amd64/lib/tools.jar
+2. 
 
 2. What is the average trip distance in general and per day of the week?
 
