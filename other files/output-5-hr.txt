@@ -1,0 +1,24 @@
+0,_HourTripDistance_Avg,  2.873086452484131
+10,_HourTripDistance_Avg, 2.0379438400268555
+11,_HourTripDistance_Avg ,1.9474130868911743
+12,_HourTripDistance_Avg, 2.0527708530426025
+13,_HourTripDistance_Avg ,2.222043514251709
+14,_HourTripDistance_Avg, 2.292654037475586
+15,_HourTripDistance_Avg ,2.2387826442718506
+16,_HourTripDistance_Avg, 2.349807024002075
+17,_HourTripDistance_Avg ,2.1388983726501465
+18,_HourTripDistance_Avg, 2.0318479537963867
+19,_HourTripDistance_Avg ,2.165769100189209
+1,_HourTripDistance_Avg,  2.6568069458007812
+20,_HourTripDistance_Avg, 2.4314587116241455
+21,_HourTripDistance_Avg ,2.6187291145324707
+22,_HourTripDistance_Avg, 2.693665027618408
+23,_HourTripDistance_Avg ,2.848620891571045
+2,_HourTripDistance_Avg,  2.537382125854492
+3,_HourTripDistance_Avg , 2.772606611251831
+4,_HourTripDistance_Avg  ,3.551952600479126
+5,_HourTripDistance_Avg,  3.781196117401123
+6,_HourTripDistance_Avg , 2.728501081466675
+7,_HourTripDistance_Avg  ,2.2860841751098633
+8,_HourTripDistance_Avg,  2.015052318572998
+9,_HourTripDistance_Avg , 1.9703583717346191

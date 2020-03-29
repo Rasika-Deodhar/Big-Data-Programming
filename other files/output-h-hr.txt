@@ -1,0 +1,24 @@
+0,_Hour_Trip_Avg_Avg,     1.6284041164827863
+10,_Hour_Trip_Avg_Avg,    1.5429490136789856
+11,_Hour_Trip_Avg_Avg,    1.5544014569454956
+12,_Hour_Trip_Avg_Avg,    1.552102271304435
+13,_Hour_Trip_Avg_Avg,    1.558613783644098
+14,_Hour_Trip_Avg_Avg ,   1.5584338467248098
+15,_Hour_Trip_Avg_Avg  ,  1.5735694399424534
+16,_Hour_Trip_Avg_Avg   , 1.5613366204181478
+17,_Hour_Trip_Avg_Avg,    1.569036589574683
+18,_Hour_Trip_Avg_Avg ,   1.5734715078321362
+19,_Hour_Trip_Avg_Avg  ,  1.5807838168859394
+1,_Hour_Trip_Avg_Avg    , 1.6375902354668115
+20,_Hour_Trip_Avg_Avg    ,1.5892043006680143
+21,_Hour_Trip_Avg_Avg,    1.6071782891939574
+22,_Hour_Trip_Avg_Avg ,   1.6149119402458454
+23,_Hour_Trip_Avg_Avg  ,  1.6144954623950878
+2,_Hour_Trip_Avg_Avg    , 1.6365921889855921
+3,_Hour_Trip_Avg_Avg     ,1.628772055714304
+4,_Hour_Trip_Avg_Avg,     1.6053531403890515
+5,_Hour_Trip_Avg_Avg ,    1.5034606476833072
+6,_Hour_Trip_Avg_Avg  ,   1.45529899683718
+7,_Hour_Trip_Avg_Avg   ,  1.5001172774454
+8,_Hour_Trip_Avg_Avg    , 1.5196491397953584
+9,_Hour_Trip_Avg_Avg     ,1.520382705782579

@@ -1,6 +1,5 @@
-----------------------------------
 1.Bash for (Big) Data Analysis	
-----------------------------------
+==============================================
 1. How many lines of content (no header) is there in the file? (tail, wc).
 Steps:-
 1. From you linux terminal, go to folder Bash_Scripts.
@@ -37,13 +36,14 @@ Steps:-
 2. Now throw command ./script_3.sh
 
 
-------------------------------
-2. Data Management
-------------------------------
-Part 1: Download the Players.csv and Teams.csv datasets from Brightspace.
-------------------------------
-3. Populate the database using a Bash script.
+------------------------------------------------------------------------------------------------------------------------
 
+2. Data Management
+===================================
+Part 1: Download the Players.csv and Teams.csv datasets from Brightspace.
+------------------------------------------------------------------------------------------------------------------------
+3. Populate the database using a Bash script.
+Required - SQL Server and MongoDB server
 For SQL:-
 Steps:-
 1. In terminal, go to Bash_Scripts directory, then throw command sudo chmod 777 script_4.sh
@@ -65,26 +65,22 @@ Steps:-
 4. Now throw command sudo mongo < mongo_2_1.js
 5. It will display all outputs of Mongo queries.
 
-----------------------------------
+---------------------------------------------------------------------------------------------------------------------------
+
 3. Hadoop
-----------------------------------
+============================================
+Required:- Docker setup for Hadoop on Azure VM or local machine
+
 Steps to upload yellow_tripdata_2019-01.csv file in hadoop.
-1. Loading file in docker environment -> curl link-of-data
-2. Going in hadoop environment ->  docker exec -it namenode bash
-3. Then throw command ->  hdfs dfs -copyFromLocal yellow_tripdata_2019-01.csv /dataset
-4. Checking if file is uploaded ->  hdfs dfs -ls /dataset
-
-1. What is the average number of passengers per trip in general and per day of the week?
-Steps:-
-1. export HADOOP_CLASSPATH=/usr/lib/jvm/java-1.8.0-openjdk-amd64/lib/tools.jar
-2. 
-
-2. What is the average trip distance in general and per day of the week?
-
-3. What are the most used payment types? Create an ordered list using Hadoop MapReduce or a Bash script.
-
-4. Create a graph (using the output of a MapReduce job) showing the average number of passengers over the day (per hour). Create a version for work days and another for weekend days.
-
-5. Create a graph showing the average trip distance over the day (per hour). Create a version for work days and another for weekend days.
-
-6. Create a graph showing the average number of passengers over the day (per hour). Create a version for work days and another for weekend days.
+1. Loading file in docker environment -> curl https://s3.amazonaws.com/nyc-tlc/trip+data/yellow_tripdata_2019-01.csv > yellow_tripdata_2019-01.csv
+2. Going in hadoop environment ->  cd docker-hadoop
+3. To run hadoop commands through namenode -> sudo docker exec -it namenode bash
+4. Upload file from docker to hadoop -> hdfs dfs -copyFromLocal yellow_tripdata_2019-01.csv /input
+5. Checking if file is uploaded ->  hdfs dfs -ls /dataset
+6.  set Hadoop classpath -> export HADOOP_CLASSPATH=/usr/lib/jvm/java-1.8.0-openjdk-amd64/lib/tools.jar
+7. upload Hadoop_codes/Hadoop_Q1.java file to docker and then Hadoop following above steps.
+8. compile the java file -> hadoop com.sun.tools.javac.Main Hadoop_Q1.java
+9. create jar -> jar cf Hadoop_Q1.jar Hadoop_Q1*.class
+10. run the M/R job -> hadoop jar Hadoop_Q1.jar Hadoop_Q1 /input /output1
+11. check if output has loaded -> hdfs dfs -ls /output1
+Note:- Check if the output file is having unique and and does not already exist.

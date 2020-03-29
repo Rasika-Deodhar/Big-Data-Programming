@@ -1,0 +1,24 @@
+0,_Weekday_TripDistance_Avg,      3.280017614364624
+1,_Weekday_TripDistance_Avg ,     3.045062780380249
+2,_Weekday_TripDistance_Avg  ,    2.8663594722747803
+3,_Weekday_TripDistance_Avg   ,   3.106659173965454
+4,_Weekday_TripDistance_Avg    ,  3.8110461235046387
+5,_Weekday_TripDistance_Avg     , 3.6297497749328613
+6,_Weekday_TripDistance_Avg      ,2.575087547302246
+7,_Weekday_TripDistance_Avg,      2.185333013534546
+8,_Weekday_TripDistance_Avg ,     1.9508756399154663
+9,_Weekday_TripDistance_Avg  ,    1.9403154850006104
+10,_Weekday_TripDistance_Avg   ,  2.0565595626831055
+11,_Weekday_TripDistance_Avg  ,   1.9937775135040283
+12,_Weekday_TripDistance_Avg    , 2.0856711864471436
+13,_Weekday_TripDistance_Avg     ,2.288745880126953
+14,_Weekday_TripDistance_Avg,     2.3198063373565674
+15,_Weekday_TripDistance_Avg ,    2.2330117225646973
+16,_Weekday_TripDistance_Avg  ,   2.3995308876037598
+17,_Weekday_TripDistance_Avg   ,  2.114222288131714
+18,_Weekday_TripDistance_Avg    , 2.0077970027923584
+19,_Weekday_TripDistance_Avg     ,2.1608588695526123
+20,_Weekday_TripDistance_Avg,     2.4471564292907715
+21,_Weekday_TripDistance_Avg ,    2.645846128463745
+22,_Weekday_TripDistance_Avg  ,   2.732269048690796
+23,_Weekday_TripDistance_Avg   ,  2.939542055130005

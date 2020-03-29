@@ -1,0 +1,24 @@
+0,Weekend__Trip_Avg ,     1.6525488317400867
+1,Weekend__Trip_Avg ,     1.6523424666535251
+2,Weekend__Trip_Avg  ,    1.6544992071881606
+3,Weekend__Trip_Avg   ,   1.6455974991711269
+4,Weekend__Trip_Avg    ,  1.6430926096289482
+5,Weekend__Trip_Avg     , 1.563420285522087
+6,Weekend__Trip_Avg  ,    1.516120751617209
+7,Weekend__Trip_Avg   ,   1.5228256917126706
+8,Weekend__Trip_Avg    ,  1.5605729233672112
+9,Weekend__Trip_Avg     , 1.5843977352514977
+10,Weekend__Trip_Avg    , 1.6123570749356402
+11,Weekend__Trip_Avg     ,1.6208407926415211
+12,Weekend__Trip_Avg,     1.6212744859585773
+13,Weekend__Trip_Avg ,    1.6262144497438615
+14,Weekend__Trip_Avg  ,   1.622890859849789
+15,Weekend__Trip_Avg   ,  1.6289589553230508
+16,Weekend__Trip_Avg    , 1.6190606201254083
+17,Weekend__Trip_Avg ,    1.6294071769863112
+18,Weekend__Trip_Avg  ,   1.638374272814483
+19,Weekend__Trip_Avg   ,  1.6443705381461624
+20,Weekend__Trip_Avg    , 1.652906667872362
+21,Weekend__Trip_Avg    , 1.6613289223622159
+22,Weekend__Trip_Avg    , 1.656994576943262
+23,Weekend__Trip_Avg     ,1.648602992438462
